@@ -4,14 +4,18 @@ import Session from 'supertokens-node/recipe/session';
 import { getApiDomain, getWebsiteDomain } from "../utils/domains";
 import { Server } from "@hapi/hapi";
 import { plugin } from "supertokens-node/framework/hapi";
+import { loadEnvVar } from "../utils/loaders";
+
+const apiKey = loadEnvVar('SUPERTOKENS_API_KEY');
+const connectionURI = loadEnvVar('SUPERTOKENS_CONNECTION_URI');
+const googleClientId = loadEnvVar('GOOGLE_AUTH_CLIENT_ID');
+const googleClientSecret = loadEnvVar('GOOGLE_AUTH_CLIENT_SECRET');
 
 supertokens.init({
     framework: "hapi",
     supertokens: {
-        // https://try.supertokens.com is for demo purposes. Replace this with the address of your core instance (sign up on supertokens.com), or self host a core.
-        // connectionURI: "https://try.supertokens.com/appid-<APP_ID>",
-        connectionURI: "https://st-dev-c409c990-541b-11ee-a7f0-096a527e3d58.aws.supertokens.io",
-        apiKey: "cZs436mePK01lhyjNp5YCG51nv",
+        connectionURI,
+        apiKey,
     },
     appInfo: {
         // learn more about this on https://supertokens.com/docs/session/appinfo
@@ -25,13 +29,13 @@ supertokens.init({
                 config: {
                     thirdPartyId: "google",
                     clients: [{
-                        clientId: "549567446704-508ustrjg69p17ve0gsjrd663c56ndpu.apps.googleusercontent.com",
-                        clientSecret: "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"
+                        clientId: googleClientId,
+                        clientSecret: googleClientSecret,
                     }],
                 }
             }]
         }),
-        Session.init() // initializes session features
+        Session.init()
     ]
 });
 

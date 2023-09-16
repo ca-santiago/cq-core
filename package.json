@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "dependencies": {
     "@hapi/hapi": "^21.3.2",
+    "dotenv": "^16.3.1",
     "supertokens-node": "^15.2.0"
   },
   "devDependencies": {
@@ -16,7 +17,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/index.ts",
+    "start": "NODE_ENV=DEV nodemon src/index.ts",
     "build": "tsc"
   },
   "keywords": [],

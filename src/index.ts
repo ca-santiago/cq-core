@@ -1,3 +1,2 @@
-import startServer from "./server";
-
-startServer();
+import 'dotenv/config';
+import "./server";

@@ -7,6 +7,7 @@ import { registerControllers } from './controllers';
 
 const server = Hapi.server({
     port: 3001,
+    host: '0.0.0.0',
     routes: {
         cors: {
             origin: [getWebsiteDomain(), getApiDomain()],
@@ -32,4 +33,4 @@ process.on('unhandledRejection', (err) => {
     process.exit(1);
 });
 
-export default startServer;
+startServer();
