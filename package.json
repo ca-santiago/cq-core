@@ -1,10 +1,11 @@
 {
-  "name": "cq-core",
+  "name": "capitan-quier-core",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
   "dependencies": {
-    "@hapi/hapi": "^21.3.2"
+    "@hapi/hapi": "^21.3.2",
+    "supertokens-node": "^15.2.0"
   },
   "devDependencies": {
     "@types/hapi": "^18.0.10",
@@ -15,8 +16,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon --inspect src/index.ts",
-    "start": "npm run build && node ./build/index.js",
+    "start": "nodemon src/index.ts",
     "build": "tsc"
   },
   "keywords": [],
