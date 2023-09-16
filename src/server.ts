@@ -14,6 +14,9 @@ const server = Hapi.server({
             additionalHeaders: [...supertokens.getAllCORSHeaders()],
             credentials: true
         }
+    },
+    router: {
+        stripTrailingSlash: true
     }
 });
 
