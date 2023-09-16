@@ -19,7 +19,7 @@ supertokens.init({
     },
     appInfo: {
         // learn more about this on https://supertokens.com/docs/session/appinfo
-        appName: "capitan-quiet",
+        appName: "captain-quiet",
         apiDomain: getApiDomain(),
         websiteDomain: getWebsiteDomain(),
     },
