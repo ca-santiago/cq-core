@@ -1,8 +1,8 @@
-import { Server } from '@hapi/hapi';
 import { registerSupertokens } from './supertokens';
-import { registerMongodb } from './mongodb';
+import { startMongodbConnection } from './mongodb';
+import { ServerApp } from '../types/core';
 
-export const registerServices = async (server: Server) => {
+export const registerServices = async (server: ServerApp) => {
     await registerSupertokens(server);
-    await registerMongodb(server);
+    await startMongodbConnection(server);
 }

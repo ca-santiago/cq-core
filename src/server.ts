@@ -4,8 +4,9 @@ import { getApiDomain, getWebsiteDomain } from './utils/domains';
 import supertokens from "supertokens-node";
 import { registerServices } from './services';
 import { registerControllers } from './controllers';
+import { ServerApp } from './types/core';
 
-const server = Hapi.server({
+const server: ServerApp = Hapi.server({
     port: 3001,
     host: '0.0.0.0',
     routes: {

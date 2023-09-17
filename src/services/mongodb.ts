@@ -1,16 +1,10 @@
-import { Server } from "@hapi/hapi";
+import { ServerApp } from "../types/core";
 import { loadEnvVar } from "../utils/loaders";
+import mongoose from 'mongoose';
 
-export const registerMongodb = async (server: Server) => {
+export const startMongodbConnection = async (server: ServerApp) => {
     const mongourl = loadEnvVar('MONGODB_CONNECTION_URL');
-    await server.register({
-        plugin: require('hapi-mongodb'),
-        options: {
-            url: mongourl,
-            settings: {
-                useUnifiedTopology: true,
-            },
-            decorate: true
-        }
-    });
+    const connection = await mongoose.connect(mongourl).then(con => (console.log('MongoDB connection started'), con));
+    server.app.dbcon = connection;
+    return connection;
 }
