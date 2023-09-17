@@ -8,7 +8,7 @@ const productSchema = new mongoose.Schema<Product>({
     createdAt: String,
     id: String,
     ownerId: String,
-    price: String,
+    price: Number,
 }, { _id: false });
 
 productSchema.plugin(paginate);

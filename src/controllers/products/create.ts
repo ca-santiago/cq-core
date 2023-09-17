@@ -7,7 +7,7 @@ import { ProductModel } from "../../models/product";
 
 export interface CreateProductPayload {
     title: string;
-    price: string;
+    price: number;
     description?: string;
 }
 
@@ -22,13 +22,15 @@ export const createProductHandler = async (req: AppRequestWithPayload<CreateProd
     const userId = session!.getUserId();
     const { title, price, description } = payload;
 
+    const now = moment.now().toString();
     const product: Product = {
         id: v4(),
         title,
         price,
         ownerId: userId,
-        createdAt: moment.now().toString(),
+        createdAt: now,
         description,
+        lastUpdate: now
     }
 
     await ProductModel.findOneAndUpdate({ id: product.id }, { ...product }, { upsert: true }).lean().exec();
